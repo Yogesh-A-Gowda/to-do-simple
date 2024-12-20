@@ -61,7 +61,6 @@ app.post('/add',(req,res)=> {
 app.put('/update/:id', (req,res) => 
     {
     const {id} = req.params;
-    console.log(id);
     TodoModel.findById(id).then(result => 
         {
         

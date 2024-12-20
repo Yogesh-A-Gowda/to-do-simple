@@ -7,10 +7,9 @@ function Create(){
     const handleAdd = () => {
 
         axios.post(`${import.meta.env.VITE_PORT}/add`,{task:task})
-         .then(result => {
-            location.reload()
-            console.log(result)})
-         .catch(err => console.log(err))
+         .then(() => {
+            location.reload();
+            }).catch(err => console.log(err))
     }
     return(
         <div className="create__form">
