@@ -14,7 +14,7 @@ const FREND = process.env.FREND;
 
 const allowedOrigins = [
     FREND, // Local development
-    'https://book-store-zeta-sable.vercel.app',// Production frontend
+    'https://to-do-simple-zn3b.vercel.app',// Production frontend
   ];
   
   // CORS middleware
