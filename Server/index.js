@@ -32,13 +32,6 @@ const allowedOrigins = [
   }));
 
 
-
-
-
-
-
-//const uri = 'mongodb+srv://yogeshcclab:ABYYABYY*y1@cluster0.fjlbgfj.mongodb.net/TODO?retryWrites=true&w=majority&appName=Cluster0';
-
 mongoose.connect(URI).then(() => console.log('Connected to MongoDB'))
 .catch(err => console.error('Error connecting to MongoDB:'));
 
