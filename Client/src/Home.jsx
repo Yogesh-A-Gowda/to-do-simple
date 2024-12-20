@@ -7,7 +7,7 @@ function Home(){
     const [todos, setTodos] = useState([]);
     
     useEffect(() => {
-        axios.get('http://127.0.0.1:3001/get')
+        axios.get(`${import.meta.env.VITE_PORT}/get`)
             .then(result => {
                 console.log('Data from API:', result.data); // Log the response data
                 setTodos(result.data);
