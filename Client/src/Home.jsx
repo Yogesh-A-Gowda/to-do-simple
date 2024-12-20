@@ -9,24 +9,21 @@ function Home(){
     useEffect(() => {
         axios.get(`${import.meta.env.VITE_PORT}/get`)
             .then(result => {
-                console.log('Data from API:', result.data); // Log the response data
+                 // Log the response data
                 setTodos(result.data);
             })
             .catch(err => console.error('Error fetching data:', err));
     }, []);
 
     function handleEdit(id){
-        axios.put(`${import.meta.env.VITE_PORT}/update/` + id).then(result => {
-            location.reload()
-            console.log(result)})
-            .catch(err => console.log(err))
+        axios.put(`${import.meta.env.VITE_PORT}/update/` + id).then(() => {
+            location.reload()}).catch(err => console.log(err))
 
 
     }
     function handleDelete(id){
-        axios.delete(`${import.meta.env.VITE_PORT}delete/`+id).then(result => {
-            location.reload(),
-            console.log(result)
+        axios.delete(`${import.meta.env.VITE_PORT}delete/`+id).then(() => {
+            location.reload()
         }).catch(err => console.log(err))
     }
 
