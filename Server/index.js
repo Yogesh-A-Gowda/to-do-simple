@@ -3,21 +3,44 @@ const cors = require('cors')
 const app = express()
 const dotenv = require('dotenv')
 const TodoModel = require('./Models/TODO')
-
 dotenv.config()
-
-app.use(cors())
 app.use(express.json())
+const mongoose = require('mongoose');
 
 const PORT = process.env.PORT || 3000;
-const DB_URL = process.env.DB_URL;
+const URI = process.env.DB_URL;
+const FREND = process.env.FREND;
 
-const mongoose = require('mongoose');
+
+const allowedOrigins = [
+    FREND, // Local development
+    'https://book-store-zeta-sable.vercel.app',// Production frontend
+  ];
+  
+  // CORS middleware
+  app.use(cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (e.g., mobile apps or Postman)
+      if (!origin || allowedOrigins.indexOf(origin) !== -1) {
+        callback(null, true); // Allow the request
+      } else {
+        callback(new Error('Not allowed by CORS')); // Deny the request
+      }
+    },
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization', 'Accept', 'Origin', 'X-Requested-With'],
+  }));
+
+
+
+
+
+
 
 //const uri = 'mongodb+srv://yogeshcclab:ABYYABYY*y1@cluster0.fjlbgfj.mongodb.net/TODO?retryWrites=true&w=majority&appName=Cluster0';
 
-mongoose.connect(DB_URL).then(() => console.log('Connected to MongoDB'))
-.catch(err => console.error('Error connecting to MongoDB:', err));
+mongoose.connect(URI).then(() => console.log('Connected to MongoDB'))
+.catch(err => console.error('Error connecting to MongoDB:'));
 
 
 

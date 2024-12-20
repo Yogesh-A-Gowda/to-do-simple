@@ -6,7 +6,7 @@ function Create(){
     const [task,setTask] = useState()
     const handleAdd = () => {
 
-        axios.post('http://127.0.0.1:3001/add',{task:task})
+        axios.post(`${import.meta.env.VITE_PORT}/add`,{task:task})
          .then(result => {
             location.reload()
             console.log(result)})

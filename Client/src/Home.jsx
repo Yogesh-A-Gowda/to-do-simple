@@ -16,7 +16,7 @@ function Home(){
     }, []);
 
     function handleEdit(id){
-        axios.put('http://127.0.0.1:3001/update/' + id).then(result => {
+        axios.put(`${import.meta.env.VITE_PORT}/update/` + id).then(result => {
             location.reload()
             console.log(result)})
             .catch(err => console.log(err))
@@ -24,7 +24,7 @@ function Home(){
 
     }
     function handleDelete(id){
-        axios.delete('http://127.0.0.1:3001/delete/'+id).then(result => {
+        axios.delete(`${import.meta.env.VITE_PORT}delete/`+id).then(result => {
             location.reload(),
             console.log(result)
         }).catch(err => console.log(err))
