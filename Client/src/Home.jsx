@@ -22,7 +22,7 @@ function Home(){
 
     }
     function handleDelete(id){
-        axios.delete(`${import.meta.env.VITE_PORT}delete/`+id).then(() => {
+        axios.delete(`${import.meta.env.VITE_PORT}/delete/`+id).then(() => {
             location.reload()
         }).catch(err => console.log(err))
     }
